@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="./images/favicon.ico"/>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <title>Connexion</title>
+</head>
+
+<body class="bg-dark pt-5">
+    <div class="row m-0 h-100 pt-5 mt-5">
+        <div class="p-0 bg-custom d-flex align-items-center pt-3 mb-5 flex-column w-100 h-75">
+            <form action="/auth" method="POST" class="formWidth"> 
+                <div class="mb-3 text-white">
+                    <label for="emailInput" class="form-label">Adresse Email :</label>
+                    <input type="text" class="form-control" id="emailInput" name="email" required>
+                </div>
+                <div class="mb-3 text-white">
+                    <label for="passwordInput" class="form-label">Mot de passe :</label>
+                    <input type="password" class="form-control" id="passwordInput" name="password" required>
+                </div>
+                <input type="submit" id="formSubmit" class="btn-custom btn-block py-2" value="Connexion">
+            </form>
+            <button class="btn btn-block py-2> />
+        </div>
+    </div>
+    <script src="./js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyToTool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d2c5f0bc9c.js" crossorigin="anonymous"></script>    
+</head>
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/tasks">MyToTool</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Rechercher" aria-label="Rechercher">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/logout">Se déconnecter</a>
+            </li>
+        </ul>
+    </header>
+    
+    
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/tasks">
+                                <span data-feather="tasks"></span>
+                                Liste de tâches
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <% if (messages.success) { %>
+                        <div class="alert alert-success" role="alert"><%- messages.success %></div>
+                        <% } %>
+                        
+                        <% if (messages.error) { %>
+                            <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+                            <% } %>
+                        </div>
+                        
+                        <a class="btn btn-dark" href="/tasks/add"><i class="fas fa-plus"></i></a>
+                        <div class="table-responsive">
+                            <div class="card-body">
+                                
+                                <% if(data.length) { %>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nᵒ</th>
+                                                <th scope="col">Tâche</th>
+                                                <th scope="col">Description</th>
+                                                <th width="200px">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i = 0; i< data.length; i++) { %>
+                                                <tr>
+                                                    <td><%= data[i].id%></td>
+                                                    <td><%= data[i].client%></td>
+                                                    <td><%= data[i].projet%></td>
+                                                    <td><%= data[i].date%></td>
+                                                    <td>
+                                                        <a class="btn btn-success edit" href="../tasks/edit/<%=data[i].id%>"><i class="far fa-edit"></i></a>                       
+                                                        <a class="btn btn-danger delete" href="../tasks/delete/<%=data[i].id%>"><i class="far fa-trash-alt"></i></a>                       
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                            </tbody>
+                                        </table>
+                                        <% } %>
+                                        
+                                        <!-- Si aucune tâche en BDD -->
+                                        <% if(!data.length) { %>
+                                            <p class="text-center">Aucune tâche en cours</p>
+                                        <% } %>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>                    
+        
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+    </body>
+    </html>
+    
